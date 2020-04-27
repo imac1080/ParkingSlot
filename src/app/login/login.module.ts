@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { LoginPage } from './login.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    RouterModule.forChild([{ path: '', component: LoginPage }])
+    RouterModule.forChild([{ path: '', component: LoginPage }]),
+    HttpClientModule,
   ],
   declarations: [LoginPage]
 })

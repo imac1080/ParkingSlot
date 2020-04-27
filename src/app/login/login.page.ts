@@ -38,8 +38,7 @@ export class LoginPage {
     subHeader: 'Datos Login:',
     buttons: ['OK']}).then(alert=> alert.present());
 
-   
+
   }
-  
 }
 
