@@ -4,12 +4,12 @@ import { Platform, AlertController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-tab1',
-  templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss']
+  selector: 'app-login',
+  templateUrl: 'login.page.html',
+  styleUrls: ['login.page.scss']
   
 })
-export class Tab1Page {
+export class LoginPage {
   m_input_login: string = "";
   m_input_password: string = "";
   postData = {
@@ -34,7 +34,7 @@ export class Tab1Page {
       this.json = JSON.stringify(data.json);
     });
     const alert = this.alertCtrl.create({
-    message: 'Usuario: '+this.m_input_login+ ' \n Contraseña: '+this.m_input_password,
+    message: 'Usuario: ' + this.m_input_login + ' \n Contraseña: ' + this.m_input_password,
     subHeader: 'Datos Login:',
     buttons: ['OK']}).then(alert=> alert.present());
 
