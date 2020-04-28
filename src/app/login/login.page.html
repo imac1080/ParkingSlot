@@ -1,23 +1,25 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Login
-    </ion-title>
+    <ion-button color="light" (click)="dismissLogin()">Close</ion-button>
+    <ion-title>Login</ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content [fullscreen]="true">
-<ion-item>
-  <ion-label position="floating">Usuario</ion-label>
-  <ion-input autocapitalize  [(ngModel)]="m_input_login" id="input_login" inputmode="text" ></ion-input>
-</ion-item>
-<ion-item>
-  <ion-label position="floating">Contraseña</ion-label>
-  <ion-input autocapitalize [(ngModel)]="m_input_password" id="input_password" type="password" ></ion-input>
-</ion-item>
-<ion-button 
-      color="primary" 
-      expand="block" 
-      (click)="showAlert()">Login</ion-button>
-  <!--<app-explore-container name="Tab 1 page"></app-explore-container> -->
+<ion-content padding>
+  <form #form="ngForm" (ngSubmit)="callModelService(form)" method="post">
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input ngModel type="email" name="email"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input ngModel type="password" name="password"></ion-input>
+    </ion-item>
+  
+    <p style="text-align: right;">Forgot Password?</p>
+  
+    <ion-button class="buttonLogin" type="submit" expand="full" color="primary" (click)="callModelService(form)">Login</ion-button>
+  </form>
+  <p style="text-align: center;">Don't have a account?</p>
+  <ion-button class="buttonRegister "expand="full" color="danger" (click)="registerModal()">Register</ion-button>
 </ion-content>

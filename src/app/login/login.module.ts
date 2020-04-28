@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { LoginPage } from './login.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ModelService } from '../services/model.service';
 
 @NgModule({
   imports: [
@@ -15,6 +16,9 @@ import { HttpClientModule } from '@angular/common/http';
     ExploreContainerComponentModule,
     RouterModule.forChild([{ path: '', component: LoginPage }]),
     HttpClientModule,
+  ],
+  providers: [
+    ModelService
   ],
   declarations: [LoginPage]
 })

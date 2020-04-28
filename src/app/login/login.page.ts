@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
 import { Platform, AlertController } from '@ionic/angular';
-import { HttpClient } from '@angular/common/http';
+import { ModelService } from '../services/model.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -10,24 +11,13 @@ import { HttpClient } from '@angular/common/http';
   
 })
 export class LoginPage {
-  m_input_login: string = "";
-  m_input_password: string = "";
-  postData = {
-    test: 'my content',
-  };
-  url = 'http://localhost:3000/user/allUsers';
-  json;
 
   constructor(private formBuilder: FormBuilder, 
-    private alertCtrl: AlertController,
-    private http: HttpClient) {
-      this.http.get(this.url).toPromise().then((data:any) => {
-        console.log(data);
-        //console.log(data.json.test);
-        this.json = JSON.stringify(data.json);
-      });
-    }
-  showAlert() {
+    private alertCtrl: AlertController, private modelService: ModelService) { }
+
+    email: string = '';
+    password: string = '';
+  /*showAlert() {
     this.http.get(this.url).toPromise().then((data:any) => {
       console.log(data);
       //console.log(data.json.test);
@@ -39,6 +29,15 @@ export class LoginPage {
     buttons: ['OK']}).then(alert=> alert.present());
 
 
+  }*/
+
+  callModelService(form: NgForm){
+    this.modelService.login(form.value.email, form.value.password).subscribe(data => {
+      console.log(data);
+    },
+    error => {
+      console.log(error);
+    });
   }
 }
 
